@@ -1,0 +1,90 @@
+/* admin-style.css */
+
+/* General Styles */
+body {
+    background: #212529;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  /* Card Design */
+  .card {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  .card:hover {
+    transform: scale(1.02);
+  }
+
+  .card-header {
+    background-color: #444444;
+    color: #ffd700;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    animation: fadeInDown 1s;
+  }
+
+  .card-body {
+    background-color: #212529;
+    color: #ffffff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
+  /* Button Styles */
+  .btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-info {
+    background-color: #17a2b8;
+  }
+
+  .btn-info:hover {
+    background-color: #138496;
+  }
+
+  .btn-warning {
+    background-color: #ffc107;
+  }
+
+  .btn-warning:hover {
+    background-color: #e0a800;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+
+  /* Layout Styles */
+  .d-flex {
+    align-items: center;
+  }
+
+  .container {
+    padding-top: 20px;
+  }
+
+  /* Media and Animation */
+  .news-video, .news-image {
+    display: block;
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: zoomIn 1s;
+  }
