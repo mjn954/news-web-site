@@ -1,4 +1,6 @@
-
+@php
+    $sliders = App\Models\slider::all();
+@endphp
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -6,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وب‌سایت خبری لوکس</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
@@ -20,27 +22,27 @@
     <!-- News slider -->
     <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/prime.jpg" class="d-block w-100" alt="خبر اول">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>تحولات جدید در بازار ارز؛ روند صعودی یا نزولی؟</h5>
-                    <p>توضیحات کوتاه درباره این خبر...</p>
+            @foreach($sliders as $key => $slider)
+                @php
+                    // ایجاد مسیر تصویر با توجه به SLIDER_IMAGES_PATH در فایل .env
+                    $imagePath = $slider->image
+                        ? asset(env('SLIDER_IMAGES_PATH') . $slider->image)  // استفاده از SLIDER_IMAGES_PATH از .env
+                        : asset('images/default.jpg'); // تصویر پیش‌فرض در صورت عدم وجود تصویر
+                @endphp
+
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <img src="{{ $imagePath }}" class="d-block w-100" alt="{{ $slider->title }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ $slider->title }}</h5>
+                        <p>{{ $slider->body }}</p>
+                        @if($slider->link_adress)
+                            <a href="{{ $slider->link_adress }}" class="btn btn-warning">
+                                {{ $slider->link_title ?? 'مشاهده بیشتر' }}
+                            </a>
+                        @endif
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/prime.jpg" class="d-block w-100" alt="خبر دوم">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>چه اتفاقی در نشست سیاسی اخیر رخ داد؟</h5>
-                    <p>توضیحات کوتاه درباره نشست سیاسی...</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="images/prime.jpg" class="d-block w-100" alt="خبر سوم">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>گزارش ویژه از پیشرفت‌های تکنولوژی در سال ۲۰۲۵</h5>
-                    <p>توضیحات کوتاه درباره پیشرفت‌های تکنولوژی...</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -52,6 +54,7 @@
         </button>
     </div>
 
+{{-- end slider --}}
     <!-- Latest News Section -->
     <div class="container mt-5">
         <div class="row">
@@ -91,7 +94,7 @@
 
     <!-- Footer Section -->
    @include('layout.footer')
-
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/pageone.js"></script>
 </body>
 

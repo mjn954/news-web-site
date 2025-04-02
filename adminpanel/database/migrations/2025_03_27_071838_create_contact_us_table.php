@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('movie')->nullable();
             $table->timestamps();
         });
