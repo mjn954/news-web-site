@@ -1,5 +1,6 @@
 @php
     $sliders = App\Models\slider::all();
+
 @endphp
 <!DOCTYPE html>
 <html lang="fa">
@@ -56,39 +57,37 @@
 
 {{-- end slider --}}
     <!-- Latest News Section -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-8">
-                <h2>آخرین اخبار</h2>
+    @php
+    $sliders = App\Models\homenews::all(); // دریافت تمامی اخبار
+@endphp
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>آخرین اخبار</h2>
+            @foreach($sliders as $slider)
+                @php
+                    // محاسبه طول 24% از متن
+                    $contentLength = strlen($slider->body);
+                    $showLength = ceil($contentLength * 0.24); // 24 درصد از طول متن
+
+                    // نمایش 24 درصد از متن
+                    $sanitizedBody = substr($slider->body, 0, $showLength) . '...'; // اضافه کردن '...' برای نشان دادن ادامه متن
+                @endphp
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">تحولات جدید در بازار ارز؛ روند صعودی یا نزولی؟</h5>
-                        <p class="card-text">توضیحات کوتاه درباره این موضوع...</p>
+                        <h5 class="card-title">{{ $slider->title }}</h5> <!-- عنوان کامل نمایش داده می‌شود -->
+                        <p class="card-text">{{ $sanitizedBody }}</p> <!-- نمایش محتوای سانسور شده -->
                         <a href="#" class="btn btn-gold">ادامه مطلب</a>
                     </div>
                 </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">چه اتفاقی در نشست سیاسی اخیر رخ داد؟</h5>
-                        <p class="card-text">توضیحات کوتاه درباره نشست سیاسی...</p>
-                        <a href="#" class="btn btn-gold">ادامه مطلب</a>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">گزارش ویژه از پیشرفت‌های تکنولوژی در سال ۲۰۲۵</h5>
-                        <p class="card-text">توضیحات کوتاه درباره پیشرفت‌های تکنولوژی...</p>
-                        <a href="#" class="btn btn-gold">ادامه مطلب</a>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">مهمترین تغییرات در سیاست‌های اقتصادی کشور</h5>
-                        <p class="card-text">توضیحات کوتاه درباره سیاست‌های اقتصادی...</p>
-                        <a href="#" class="btn btn-gold">ادامه مطلب</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+
+            {{-- end news --}}
             {{-- newsgroup --}}
          @include('layout.newsgroup')
 
