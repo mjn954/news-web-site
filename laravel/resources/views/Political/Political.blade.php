@@ -1,5 +1,5 @@
 @php
-    $sliders = App\Models\Slider::all();
+    $sliders = App\Models\Political::all(); // گرفتن همه اسلاید‌ها از مدل Political
 @endphp
 
 <!DOCTYPE html>
@@ -26,10 +26,10 @@
     <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             @foreach($sliders as $key => $slider)
-            @php
-            // استفاده از تابع imageUrl برای ایجاد مسیر تصویر
-            $imagePath = imageUrl($slider->image);
-            @endphp
+                @php
+                    // استفاده از تابع imageUrl برای ایجاد مسیر تصویر
+                    $imagePath = imageUrl($slider->image);
+                @endphp
 
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <img src="{{ $imagePath }}" class="d-block w-100" alt="{{ $slider->title }}">
@@ -56,7 +56,7 @@
     </div>
 
     @php
-    $homenews = App\Models\Homenews::paginate(4);
+        $homenews = App\Models\Politicalnews::paginate(4); // دریافت اخبار از مدل Politicalnews
     @endphp
 
     <div class="container mt-5">
@@ -103,6 +103,3 @@
 </body>
 
 </html>
-
-
-

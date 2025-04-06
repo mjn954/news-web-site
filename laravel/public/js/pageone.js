@@ -1,10 +1,9 @@
-// فعال سازی کاروسل برای اسلاید نمایش اخبار
+
 const carousel = new bootstrap.Carousel(document.getElementById('newsCarousel'), {
-    interval: 5000,  // تغییر تصویر هر 5 ثانیه
-    ride: 'carousel' // فعال سازی حرکت اتوماتیک
+    interval: 5000,
+    ride: 'carousel'
 });
 
-// افزودن رفتار هنگام کلیک بر روی دکمه ادامه مطلب
 const continueButtons = document.querySelectorAll('.btn-gold');
 continueButtons.forEach(button => {
     button.addEventListener('click', function(event) {
@@ -25,3 +24,4 @@ window.addEventListener('scroll', function() {
 
 
 document.styleSheets[0].insertRule('.header.scrolled { background-color: rgba(0, 0, 0, 0.8); transition: background-color 0.3s ease; }', 0);
+
