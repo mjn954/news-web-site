@@ -1,9 +1,10 @@
+<!-- resources/views/political/show.blade.php -->
 <!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $homenews->title }}</title>
+    <title>{{ $Politicalnews->title }}</title>
 
     <!-- لینک به Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,28 +15,38 @@
 <body>
     <div class="container mt-5">
         <div class="header">
-            <h1>{{ $homenews->title }}</h1>
-            <p>تاریخ انتشار: {{ $homenews->created_at->format('d F Y') }}</p>
+            <h1>{{ $Politicalnews->title }}</h1>
+
+            <!-- بررسی اینکه تاریخ انتشار وجود دارد یا نه -->
+            <p>تاریخ انتشار:
+                @if($Politicalnews->created_at)
+                    {{ $Politicalnews->created_at->format('d F Y') }}
+                @else
+                    تاریخ انتشار نامشخص
+                @endif
+            </p>
         </div>
 
         <div class="news-container mt-4">
-            <p>{{ $homenews->body }}</p>
+            <p>{{ $Politicalnews->body }}</p>
 
-            @if($homenews->image)
-                <img src="{{ asset('storage/' . $homenews->image) }}" alt="News Image" class="img-fluid"/>
-            @else
-                <img src="https://via.placeholder.com/600x400.png?text=No+Image" alt="No Image" class="img-fluid"/>
-            @endif
+            <!-- بررسی تصویر و نمایش آن -->
+            <img src="{{ $Politicalnews->image ? asset('storage/' . $Politicalnews->image) : 'https://via.placeholder.com/600x400.png?text=No+Image' }}" alt="News Image" class="img-fluid"/>
 
-            @if($homenews->movie)
+            <!-- بررسی و نمایش ویدئو -->
+            @if($Politicalnews->movie)
                 <video controls>
-                    <source src="{{ asset('storage/' . $homenews->movie) }}" type="video/mp4">
+                    <source src="{{ asset('storage/' . $Politicalnews->movie) }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+            @else
+                <p>ویدئو موجود نیست.</p>
             @endif
         </div>
 
-        <a href="{{ route('home') }}" class="btn btn-gold">بازگشت به صفحه اصلی</a>
+        <!-- دکمه برگشت -->
+
+        <a href="{{ url()->previous() }}" class="btn btn-gold">بازگشت به صفحه قبل</a>
     </div>
 
     <footer class="footer mt-5">

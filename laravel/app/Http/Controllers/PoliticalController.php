@@ -1,18 +1,22 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\Politicalnews;
 use Illuminate\Http\Request;
 
 class PoliticalController extends Controller
 {
+
     public function index()
     {
-        return view ('Political.Political');
+        return view('Political.Political');
     }
-    public function show()
+
+
+    public function show($id)
     {
-        return view ('Political.Politicalnews');
+        $Politicalnews = Politicalnews::findOrFail($id);
+        return view('Political.Politicalnews', compact('Politicalnews'));
     }
 
 }

@@ -21,6 +21,6 @@ Route::group(['prefix' => 'ContactUs'], function () {
 });
 
 Route::group(['prefix' => 'Political'], function () {
-    Route::get('/',[PoliticalController::class,'index'])->name('Political.index');
-    Route::post('/',[PoliticalController::class,'show'])->name('Political.show');
+    Route::get('/', [PoliticalController::class, 'index'])->name('Political.index');
+    Route::get('/political/{id}', [PoliticalController::class, 'show'])->name('Political.show');
 });

@@ -17,7 +17,7 @@
                         اخبار
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="newsDropdown">
-                        <li><a class="dropdown-item" href="#">سیاسی</a></li>
+                        <li><a class="dropdown-item" href="{{ route("Political.index") }}">سیاسی</a></li>
                         <li><a class="dropdown-item" href="#">فرهنگی</a></li>
                         <li><a class="dropdown-item" href="#">فناوری</a></li>
                         <li><a class="dropdown-item" href="#">اقتصادی</a></li>
