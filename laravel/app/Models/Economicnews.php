@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sportnews extends Model
+class Economicnews extends Model
 {
     use HasFactory;
-    protected $table = 'sportsnews';
+    protected $table = 'economicnews';
     protected $guarded = [];
 }

@@ -6,10 +6,7 @@ const carousel = new bootstrap.Carousel(document.getElementById('newsCarousel'),
 
 const continueButtons = document.querySelectorAll('.btn-gold');
 continueButtons.forEach(button => {
-    button.addEventListener('click', function(event) {
-        event.preventDefault();
-        alert('شما روی دکمه "ادامه مطلب" کلیک کرده‌اید.');
-    });
+
 });
 
 

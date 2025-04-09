@@ -18,9 +18,9 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="newsDropdown">
                         <li><a class="dropdown-item" href="{{ route("Political.index") }}">سیاسی</a></li>
-                        <li><a class="dropdown-item" href="#">فرهنگی</a></li>
-                        <li><a class="dropdown-item" href="#">فناوری</a></li>
-                        <li><a class="dropdown-item" href="#">اقتصادی</a></li>
+                        <li><a class="dropdown-item" href="{{ route('Economic.index') }}">فرهنگی</a></li>
+                        <li><a class="dropdown-item" href="{{ route('Sport.index') }}">ورزشی</a></li>
+                        <li><a class="dropdown-item" href="{{ route("Economic.index") }}">اقتصادی</a></li>
                     </ul>
                 </li>
 
